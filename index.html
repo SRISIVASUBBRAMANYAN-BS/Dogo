@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoggyConnect - Your All-in-One Dog App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        header {
+            background: #50b3a2;
+            color: white;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header li {
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        .highlight, .current a {
+            color: #e8491d;
+            font-weight: bold;
+        }
+        .button {
+            height: 38px;
+            background: #e8491d;
+            border: 0;
+            padding-left: 20px;
+            padding-right: 20px;
+            color: #ffffff;
+        }
+        .card {
+            background: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><i class="fas fa-dog"></i> DoggyConnect</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="current"><a href="index.html">Home</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="showcase">
+            <h1>Welcome to DoggyConnect</h1>
+            <p>Your all-in-one platform for dog lovers, owners, and veterinarians!</p>
+        </section>
+
+        <section id="register" class="card">
+            <h2><i class="fas fa-user-plus"></i> User Registration</h2>
+            <form>
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div>
+                    <label for="user-type">I am a:</label>
+                    <select id="user-type" name="user-type">
+                        <option value="owner">Dog Owner</option>
+                        <option value="breeder">Dog Breeder</option>
+                        <option value="vet">Veterinarian</option>
+                    </select>
+                </div>
+                <button type="submit" class="button">Register</button>
+            </form>
+        </section>
+
+        <section id="dog-info" class="card">
+            <h2><i class="fas fa-info-circle"></i> Dog Information</h2>
+            <div id="breed-identifier">
+                <h3>Identify Dog Breed</h3>
+                <input type="file" accept="image/*" id="dog-photo" name="dog-photo">
+                <button onclick="identifyBreed()" class="button">Identify Breed</button>
+                <div id="breed-result"></div>
+            </div>
+            <div id="dog-details">
+                <h3>Enter Dog Details</h3>
+                <form>
+                    <div>
+                        <label for="dog-name">Dog's Name:</label>
+                        <input type="text" id="dog-name" name="dog-name">
+                    </div>
+                    <div>
+                        <label for="dog-breed">Breed:</label>
+                        <input type="text" id="dog-breed" name="dog-breed">
+                    </div>
+                    <div>
+                        <label for="dog-age">Age:</label>
+                        <input type="number" id="dog-age" name="dog-age">
+                    </div>
+                    <button type="submit" class="button">Save Dog Info</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="vet-services" class="card">
+            <h2><i class="fas fa-stethoscope"></i> Veterinary Services</h2>
+            <div id="find-vet">
+                <h3>Find Nearby Vets</h3>
+                <input type="text" id="location" name="location" placeholder="Enter your location">
+                <button onclick="findNearbyVets()" class="button">Find Vets</button>
+                <div id="vet-results"></div>
+            </div>
+            <div id="book-appointment">
+                <h3>Book an Appointment</h3>
+                <form>
+                    <div>
+                        <label for="vet-name">Veterinarian:</label>
+                        <input type="text" id="vet-name" name="vet-name">
+                    </div>
+                    <div>
+                        <label for="appointment-date">Date:</label>
+                        <input type="date" id="appointment-date" name="appointment-date">
+                    </div>
+                    <div>
+                        <label for="appointment-time">Time:</label>
+                        <input type="time" id="appointment-time" name="appointment-time">
+                    </div>
+                    <button type="submit" class="button">Book Appointment</button>
+                </form>
+            </div>
+            <div id="video-call">
+                <h3>Video Call with Vet</h3>
+                <button onclick="startVideoCall()" class="button">Start Video Call</button>
+            </div>
+        </section>
+
+        <section id="fun-feature" class="card">
+            <h2><i class="fas fa-laugh-beam"></i> Fun Feature</h2>
+            <h3>What Dog Breed Do You Look Like?</h3>
+            <p>Visit our partner app to find out what dog breed you resemble!</p>
+            <a href="https://dogapp-omega.vercel.app/" target="_blank" class="button">Try it out!</a>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 DoggyConnect. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Placeholder functions for JavaScript functionality
+        function identifyBreed() {
+            // Implement breed identification logic here
+            console.log("Breed identification functionality to be implemented");
+        }
+
+        function findNearbyVets() {
+            // Implement nearby vet search logic here
+            console.log("Nearby vet search functionality to be implemented");
+        }
+
+        function startVideoCall() {
+            // Implement video call functionality here
+            console.log("Video call functionality to be implemented");
+        }
+    </script>
+</body>
+</html>
